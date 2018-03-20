@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name = "TestSuite" thread-count="2" parallel= "tests">
+    
+     
+      
+    <test name = "ChromeTest1">       
+        <parameter name = "driverName" value = "webdriver.chrome.driver"/>
+        <parameter name = "driverPath" value = "Browsers/chromedriver.exe"/>
+        <parameter name = "browser" value = "Chrome"/>
+          
+        <classes>
+            <class name = "Suites.General"/>                
+            <class name = "Suites.StartPageTest"/>                
+        </classes>
+     </test>    
+     <test name = "FirefoxTest1">
+        <parameter name = "driverName" value = "webdriver.gecko.driver"/>
+        <parameter name = "driverPath" value = "Browsers/geckodriver.exe"/>
+        <parameter name = "browser" value = "Firefox"/>
+          
+        <classes>
+            <class name = "Suites.General"/>
+            <class name = "Suites.StartPageTest"/>
+        </classes>
+     </test>
+ </suite> 

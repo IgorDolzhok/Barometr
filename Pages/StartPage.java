@@ -171,11 +171,11 @@ public class StartPage {
         return result;
 	}
 	
-	public boolean checkCoordinates(String webelement, String xpath, int y, int x) {
+	public boolean checkCoordinates(String webelement, String xpath, int x, int y) {
 		boolean result = true;
-		if(driver.findElement(By.xpath(xpath)).getLocation().getY()!= y||driver.findElement(By.xpath(xpath)).getLocation().getX()!=x) {
-			System.out.println(webelement+" находится в неправильных координатах: "+driver.findElement(By.xpath(xpath)).getLocation().getY() +" , "+
-					driver.findElement(By.xpath(xpath)).getLocation().getX());
+		if(driver.findElement(By.xpath(xpath)).getLocation().getX()!= x||driver.findElement(By.xpath(xpath)).getLocation().getY()!=y) {
+			System.out.println(webelement+" находится в неправильных координатах: "+driver.findElement(By.xpath(xpath)).getLocation().getX() +" , "+
+					driver.findElement(By.xpath(xpath)).getLocation().getY());
 			result = false;
 		}
 		return result;

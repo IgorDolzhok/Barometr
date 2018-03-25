@@ -11,8 +11,11 @@ import java.util.List;
 public class Table {
 	
 	public StringBuilder htmlStringBuilder;
+	String red = "#f45042";
+	String green = "#42f442";
 	
 	public void createTetable(List<Result> results) throws IOException{
+		
 		htmlStringBuilder = new StringBuilder();
 		htmlStringBuilder.append("<html><head><title>Selenium Test</title></head>");
 		htmlStringBuilder.append("<body>");
@@ -24,12 +27,21 @@ public class Table {
 				+ "<td><b>Description</b></td>"
 				+ "</tr>");
 		for(int x=0; x<results.size(); x++) {
-			htmlStringBuilder.append("<tr>"
+			if(results.get(x).getTestResult()==false) { 
+			htmlStringBuilder.append("<tr bgcolor = \""+red+"\">"
 					+ "<td>"+results.get(x).getBrowserName()+"</td>"
 					+ "<td>"+results.get(x).getNameOfMethod()+"</td>"
 					+ "<td>"+results.get(x).getTestResult()+"</td>"
 					+ "<td>"+results.get(x).getDescription()+"</td>"
 					+"</tr>");
+			}else if(results.get(x).getTestResult()==true) {
+				htmlStringBuilder.append("<tr bgcolor = \""+green+"\">"
+						+ "<td>"+results.get(x).getBrowserName()+"</td>"
+						+ "<td>"+results.get(x).getNameOfMethod()+"</td>"
+						+ "<td>"+results.get(x).getTestResult()+"</td>"
+						+ "<td>"+results.get(x).getDescription()+"</td>"
+						+"</tr>");
+			}
 		}			
 		htmlStringBuilder.append("</table></body></html>");
 		WriteToFile(htmlStringBuilder.toString(), "test-output/myReport.html");
